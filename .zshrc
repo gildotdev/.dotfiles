@@ -7,18 +7,20 @@ eval "$(starship init zsh)"
 
 export EDITOR='nvim'
 
-op  inject --in-file "${HOME}/dotfiles/secrets.zsh" | while read -r line; do
-  eval "$line"
-done
+# Only load secrets when not in an SSH session
+if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
+  op inject --in-file "${HOME}/.dotfiles/secrets.zsh" | while read -r line; do
+    eval "$line"
+  done
+fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/gilcreque/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/gilcreque/bin/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/gilcreque/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/gilcreque/bin/google-cloud-sdk/completion.zsh.inc'; fi
-
+# Only load 1password agent when not in an SSH session
+if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
+  export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+fi
 
 # Load Angular CLI autocompletion.
+autoload -Uz compinit && compinit
 source <(ng completion script)
 
 # place this after nvm initialization!
@@ -41,3 +43,15 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+source ${HOME}/.dotfiles/.aliases
+source ${HOME}/.dotfiles/.functions
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/gilcreque/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/gilcreque/bin/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/gilcreque/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/gilcreque/bin/google-cloud-sdk/completion.zsh.inc'; fi
+
+# opencode
+export PATH=/Users/gilcreque/.opencode/bin:$PATH

@@ -1,6 +1,7 @@
 [user]
 	name = Gil Creque
 	email = me@gilcreque.com
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9rYZrRE0Zgd6pnHLX4TZwyccS5jo4Obnd9lgnWULJuDI7ZvYEgdKXZbAAC8IzCvpDdrROLbpQ70FWJAhKPfP6E1oeb29kJ6tnQ9txpvRGGvW4USQ6r6lygxmPiNpuWbGXwXSbbjVHP1OGpmWcNf1/iXXVGEUrXxDYSyYb7VHgZ+k9vZ6m2We26h9QOLoy2npQLeZnX9NmwJMB3a7d+wQSKjiGse1s9PTgRtJrFkTW0phnoDnKX1J9xX0vcOU/ubIx5Dewy6APsLeU2xSWz5RsBSGE95JmYvMHRw8eAQruk+o3KUuGz3mCwiVHvTlW2eXESpdk9LPWFLD3DsSghTf8R99GwNF7SPWapChZzp6DGgKAhcegI0A9JdygZ4ClpnpEBZz/BwHKqCIXSGL44O5CedmA4YD8VDivodRSLkeFYvm+3AKyWJucKlPyv16IvMbzpx5ihjDQR/nDpXnMnCwFkzhy/Z9nTr4eZqdKeq52nibzlYUfzh+VeEqN2SaNLQM=
 [include]
 	path = ~/.gitconfig.aliases
 [diff]
@@ -20,3 +21,11 @@
 	defaultBranch = main
 [fetch]
 	prune = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = false
+[core]
+	editor = code --wait
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
