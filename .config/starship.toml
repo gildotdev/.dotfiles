@@ -3,12 +3,7 @@ command_timeout = 1500
 palette = "dracula"
 
 format = """
-[](#9A348E)\
-$username\
-$hostname\
-[](bg:#DA627D fg:#9A348E)\
-$directory\
-[](bg:#FCA17D fg:#DA627D)
+[](#FCA17D)\
 $git_branch\
 $git_status\
 [](fg:#FCA17D bg:#86BBD8)\
@@ -19,7 +14,13 @@ $rust\
 $python\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_context\
-[](fg:#06969A bg:#33658A)\
+[](fg:#06969A)
+[](#9A348E)\
+$username\
+$hostname\
+[](bg:#DA627D fg:#9A348E)\
+$directory\
+[](fg:#DA627D bg:#33658A)\
 $time\
 [ ](fg:#33658A)\
 """
