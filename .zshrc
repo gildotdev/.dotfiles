@@ -7,13 +7,6 @@ eval "$(starship init zsh)"
 
 export EDITOR='nvim'
 
-# Only load secrets when not in an SSH session
-if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
-  op inject --in-file "${HOME}/.dotfiles/secrets.zsh" | while read -r line; do
-    eval "$line"
-  done
-fi
-
 # Only load 1password agent when not in an SSH session
 if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
   export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -44,14 +37,23 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-source ${HOME}/.dotfiles/.aliases
-source ${HOME}/.dotfiles/.functions
+source $HOME/.dotfiles/.aliases
+source $HOME/.dotfiles/.functions
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '${HOME}/bin/google-cloud-sdk/path.zsh.inc' ]; then . '${HOME}/bin/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '${HOME}/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '${HOME}/bin/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
 
 # opencode
-export PATH=${HOME}/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
+
+# Only load secrets when not in an SSH session
+if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
+  op inject --in-file "$HOME/.dotfiles/secrets.zsh" | while read -r line; do
+    eval "$line"
+  done
+fi
+# Created by `pipx` on 2025-09-18 16:52:03
+export PATH="$PATH:$HOME/.local/bin"
