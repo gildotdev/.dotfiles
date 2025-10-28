@@ -1,5 +1,5 @@
-alias ll='ls -laG'
-alias cat='bat'
+alias ll='ls -laG | bat -l conf -p -P'
+alias cat='bat -p -P'
 alias rm='trash'
 alias p=projdir
 alias pkill=killbyname
