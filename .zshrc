@@ -67,3 +67,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Created by `pipx` on 2025-09-18 16:52:03
 export PATH="$PATH:$HOME/.local/bin"
+
+# Added by Antigravity
+export PATH="/Users/gilcreque/.antigravity/antigravity/bin:$PATH"
+
+# VSCode shell integration
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
