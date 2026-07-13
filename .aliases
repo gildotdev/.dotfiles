@@ -3,3 +3,4 @@ alias cat='bat -p -P'
 alias rm='trash'
 alias p=projdir
 alias pkill=killbyname
+alias flushdns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
