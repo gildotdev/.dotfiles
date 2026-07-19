@@ -1,7 +1,14 @@
 projdir()
 {
-cd ~/projects/$1
+cd "$HOME/projects/$1"
 }
+
+_projdir()
+{
+  _files -W "$HOME/projects" -/
+}
+
+compdef _projdir projdir
 
 function killbyname(){
 	for X in `ps acx | grep -i $1 | awk {'print $1'}`
