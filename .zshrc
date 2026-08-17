@@ -67,6 +67,13 @@ export DOCKER_HOST=unix:///var/run/docker.sock
 # dotnet telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# Only load secrets when not in an SSH session
+# if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
+#   op inject --in-file "$HOME/.dotfiles/secrets.zsh" | while read -r line; do
+#     eval "$line"
+#   done
+# fi
+
 # Created by `pipx` on 2025-09-18 16:52:03
 export PATH="$PATH:$HOME/.local/bin"
 
@@ -91,3 +98,9 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Home directory binaries
 export PATH="$HOME/bin:$PATH"
+
+bindkey "^R" history-incremental-search-backward
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 25)
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
