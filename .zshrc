@@ -55,13 +55,6 @@ if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cl
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
 
-# Only load secrets when not in an SSH session
-if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
-  op inject --in-file "$HOME/.dotfiles/secrets.zsh" | while read -r line; do
-    eval "$line"
-  done
-fi
-
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
 

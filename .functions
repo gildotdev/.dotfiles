@@ -10,6 +10,11 @@ _projdir()
 
 compdef _projdir projdir
 
+# Load 1Password-backed environment variables only when explicitly requested.
+load-secrets() {
+  source <(op inject --in-file "$HOME/.dotfiles/secrets.zsh")
+}
+
 function killbyname(){
 	for X in `ps acx | grep -i $1 | awk {'print $1'}`
 		do
