@@ -21,9 +21,7 @@ if [[ -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
   export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 fi
 
-# Load Angular CLI autocompletion.
 autoload -Uz compinit && compinit
-source <(ng completion script)
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
