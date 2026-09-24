@@ -2,6 +2,7 @@
 
 format = """
 $username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -70,6 +71,13 @@ staged = '[++\($count\)](bg:overlay fg:gold)'
 ahead = '[⇡\(${count}\)](bg:overlay fg:foam)'
 diverged = '⇕[\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
 behind = '[⇣\(${count}\)](bg:overlay fg:rose)'
+
+[hostname]
+disabled = false
+ssh_only = false
+format = "[](fg:overlay)[ 󰍹 $hostname ]($style)[](fg:overlay) "
+style = "bg:overlay fg:foam"
+trim_at = "."
 
 [time]
 disabled = false
